@@ -4,7 +4,7 @@ import PlaygroundSupport
 
 let coffeeShopViewController = CoffeeShopViewController()
 let nav = UINavigationController(rootViewController: coffeeShopViewController)
-let (parent, _) = playgroundControllers(device: .phone4_7inch, orientation: .landscape, child: nav)
+let (parent, _) = playgroundControllers(device: .phone4_7inch, orientation: .portrait, child: nav)
 let frame = parent.view.frame
 PlaygroundPage.current.liveView = parent
 parent.view.frame = frame

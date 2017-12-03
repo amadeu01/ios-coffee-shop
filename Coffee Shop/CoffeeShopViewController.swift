@@ -7,31 +7,95 @@
 //
 
 import UIKit
+import CoreData
 
 class CoffeeShopViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    var products: [NSManagedObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        title = "The list of Products"
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    override func loadView() {
-        let view = UIView()
-        view.backgroundColor = .white
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
         
-        let label = UILabel()
-        label.frame = CGRect(x: 50, y: 200, width: 200, height: 20)
-        label.text = "Hello to Coffee Shop App!"
-        label.textColor = .black
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Product")
         
-        view.addSubview(label)
-        self.view = view
+        do {
+            products = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch product. \(error) \(error.userInfo)")
+        }
     }
 
+    @IBAction func addProduct(_ sender: Any) {
+        let alert = UIAlertController(title: "New Product", message: "Add a new Product", preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) {
+            [unowned self] action in
+            
+            guard let textField = alert.textFields?.first,
+                let productToSave = textField.text else {
+                    return
+            }
+            self.save(name: productToSave)
+            self.tableView.reloadData()
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+    }
+    
+    func save(name: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Product",
+                                       in: managedContext)!
+        
+        let product = NSManagedObject(entity: entity,
+                                      insertInto: managedContext)
+        product.setValue(name, forKeyPath: "name")
+        do {
+            try managedContext.save()
+            self.products.append(product)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+}
+
+extension CoffeeShopViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let product = products[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = product.value(forKey: "name") as? String
+        return cell
+    }
 }

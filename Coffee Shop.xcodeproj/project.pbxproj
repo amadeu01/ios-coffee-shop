@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6559BE721FD4A43A0078CFE8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6559BE701FD4A43A0078CFE8 /* Model.xcdatamodeld */; };
+		6559BE731FD4A43A0078CFE8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6559BE701FD4A43A0078CFE8 /* Model.xcdatamodeld */; };
+		6559BE741FD4A43A0078CFE8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6559BE701FD4A43A0078CFE8 /* Model.xcdatamodeld */; };
+		65B833C61FD4C29800C45822 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EC49371FD4685D009EBEE4 /* AppDelegate.swift */; };
 		65EC49381FD4685D009EBEE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EC49371FD4685D009EBEE4 /* AppDelegate.swift */; };
 		65EC493D1FD4685D009EBEE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65EC493B1FD4685D009EBEE4 /* Main.storyboard */; };
 		65EC493F1FD4685D009EBEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65EC493E1FD4685D009EBEE4 /* Assets.xcassets */; };
@@ -59,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		6521AABA1FD4844D007F45A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6559BE711FD4A43A0078CFE8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		65EC49341FD4685D009EBEE4 /* Coffee Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65EC49371FD4685D009EBEE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65EC493C1FD4685D009EBEE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +146,7 @@
 				65EC49401FD4685D009EBEE4 /* LaunchScreen.storyboard */,
 				65EC49431FD4685D009EBEE4 /* Info.plist */,
 				65EC49781FD46A3D009EBEE4 /* CoffeeShopViewController.swift */,
+				6559BE701FD4A43A0078CFE8 /* Model.xcdatamodeld */,
 			);
 			path = "Coffee Shop";
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 			files = (
 				65EC49791FD46A3D009EBEE4 /* CoffeeShopViewController.swift in Sources */,
 				65EC49381FD4685D009EBEE4 /* AppDelegate.swift in Sources */,
+				6559BE721FD4A43A0078CFE8 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65EC494D1FD4685E009EBEE4 /* Coffee_ShopTests.swift in Sources */,
+				6559BE731FD4A43A0078CFE8 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +372,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B833C61FD4C29800C45822 /* AppDelegate.swift in Sources */,
 				65EC497A1FD46A40009EBEE4 /* CoffeeShopViewController.swift in Sources */,
+				6559BE741FD4A43A0078CFE8 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,6 +720,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6559BE701FD4A43A0078CFE8 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6559BE711FD4A43A0078CFE8 /* Model.xcdatamodel */,
+			);
+			currentVersion = 6559BE711FD4A43A0078CFE8 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 65EC492C1FD4685D009EBEE4 /* Project object */;
 }
